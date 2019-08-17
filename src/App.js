@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const date = new Date(),
+          hours = date.getHours(),
+          minutes = date.getMinutes();
+    let timeOfDay,
+        style = {};
+
+
+    if (hours < 12) {
+      timeOfDay = "Morning";
+      style.backgroundColor = "#3498db";
+    } else if (hours >= 12 && hours < 17) {
+      timeOfDay = "Afternoon";
+      style.backgroundColor = "#f1c40f";
+    } else {
+      timeOfDay = "Night";
+      style.backgroundColor = "#2c3e50";
+    }
+
+
+
+    return (
+      <div className="App">
+        <h1 style={style}> Good {timeOfDay}! </h1>
+        <h4>It's {hours}:{minutes}</h4>
+      </div>
+    );
 }
 
 export default App;
